@@ -1,14 +1,29 @@
 {
   "name": "arcade-royale-frontend",
   "version": "0.0.1",
+  "repository": "https://github.com/MRGS/arcade-royale-frontend",
   "description": "nodewebkit-based frontend for the MRGS Arcade Royale community arcade cabinet",
   "main": "index.js",
-  "scripts": {
-    "start": "nodewebkit"
-  },
+  "keywords": [
+    "gams",
+    "videogams"
+  ],
   "author": "MRGS",
   "license": "MIT",
   "dependencies": {
-    "nodewebkit": "^0.11.3"
+    "famous": "^0.3.4",
+    "famous-polyfills": "^0.3.0"
+  },
+  "devDependencies": {
+    "6to5": "^1.15.0",
+    "6to5ify": "^2.0.0",
+    "brfs": "^1.2.0",
+    "browser-sync": "^1.8.0",
+    "browserify": "^7.0.1",
+    "cssify": "^0.6.0",
+    "famousify": "^0.1.5",
+    "node-lessify": "0.0.6",
+    "node-webkit-builder": "^1.0.0",
+    "watchify": "^2.1.0"
   }
 }
