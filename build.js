@@ -22,6 +22,7 @@ var config = {
       cache: {},
       packageCache: {},
       fullPaths: true,
+      paths: ['./src/'],
       debug: true
     }
   },
