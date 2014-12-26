@@ -10,7 +10,7 @@ import SlideshowView from 'views/SlideshowView';
 
 const defaultOptions = {
   photoUrls: [],
-  cameraWidth: 0.6 * window.innerHeight
+  cameraWidth: 0.5 * window.innerHeight
 };
 
 defaultOptions.slideWidth = 0.8 * defaultOptions.cameraWidth;
@@ -50,6 +50,7 @@ function makeSlideshow() {
 
   this.add(slideshowModifier).add(slideshowContainer);
   slideshowContainer.add(slideshowView);
+  slideshowContainer.context.setPerspective(1000);
 }
 
 function makeCamera() {

@@ -14,7 +14,7 @@ const defaultOptions = {
   lightboxOpts: {
     inOpacity: 1,
     outOpacity: 0,
-    inTransform: Transform.thenMove(Transform.rotateX(0.9), [0, -300, 0]),
+    inTransform: Transform.thenMove(Transform.rotateX(0.9), [0, -300, -300]),
     outTransform: Transform.thenMove(Transform.rotateZ(0.7), [0, window.innerHeight, -1000]),
     inTransition: { duration: 650, curve: 'easeOut' },
     outTransition: { duration: 500, curve: Easing.inCubic }
@@ -40,10 +40,20 @@ export default class SlideshowView extends View {
   }
 
   showCurrentSlide() {
-    this.lightbox.show(this.slides[this.currentIndex]);
+    this.ready = false;
+
+    const slide = this.slides[this.currentIndex];
+    this.lightbox.show(slide, () => {
+      slide.fadeIn();
+      this.ready = true;
+    });
   }
 
   showNextSlide() {
+    if(!this.ready) {
+      return;
+    }
+
     this.currentIndex++;
     if(this.currentIndex === this.slides.length) {
       this.currentIndex = 0;
@@ -66,7 +76,7 @@ function makeSlides() {
       photoUrl: photoUrl
     });
 
-    slide.on('click', this.showNextSlide.bind(this));
+    slide.on('click', () => { this.showNextSlide(); });
 
     return slide;
   });
