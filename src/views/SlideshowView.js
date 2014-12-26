@@ -2,21 +2,30 @@ import View from 'famous/core/View';
 import Surface from 'famous/core/Surface';
 import Transform from 'famous/core/Transform';
 import StateModifier from 'famous/modifiers/StateModifier';
+import Easing from 'famous/transitions/Easing';
 
 import Lightbox from 'famous/views/Lightbox';
 
 import SlideView from 'views/SlideView';
 
 const defaultOptions = {
+  photoUrls: [],
   size: [450, 500],
-  lightboxOpts: {}
+  lightboxOpts: {
+    inOpacity: 1,
+    outOpacity: 0,
+    inTransform: Transform.thenMove(Transform.rotateX(0.9), [0, -300, 0]),
+    outTransform: Transform.thenMove(Transform.rotateZ(0.7), [0, window.innerHeight, -1000]),
+    inTransition: { duration: 650, curve: 'easeOut' },
+    outTransition: { duration: 500, curve: Easing.inCubic }
+  }
 };
 
 export default class SlideshowView extends View {
   constructor(options) {
     super();
 
-    this.options = Object.assign({}, defaultOptions, options);
+    Object.assign(this.options, defaultOptions, options);
 
     this.rootModifier = new StateModifier({
       size: this.options.size,
@@ -61,8 +70,6 @@ function makeSlides() {
 
     return slide;
   });
-
-  // console.dir(this.slid es);
 
   this.showCurrentSlide();
 }

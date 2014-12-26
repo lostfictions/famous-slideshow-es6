@@ -15,7 +15,7 @@ export default class SlideView extends View {
   constructor(options) {
     super();
 
-    this.options = Object.assign({}, defaultOptions, options);
+    Object.assign(this.options, defaultOptions, options);
 
     this.rootModifier = new StateModifier({
       size: options.size

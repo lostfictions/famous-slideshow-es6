@@ -10,7 +10,7 @@ var to5ify = require('6to5ify');
 var famousify = require('famousify');
 var lessify = require('node-lessify');
 
-var NwBuilder = require('node-webkit-builder');
+// var NwBuilder = require('node-webkit-builder');
 
 var outDir = './public/';
 var config = {
@@ -34,6 +34,8 @@ var config = {
 };
 
 var tasks = {
+  //TODO: finish nwbuild-ing.
+  /*
   nwbuild: function() {
     var nw = new NwBuilder({
         version: 'latest',
@@ -51,6 +53,7 @@ var tasks = {
         console.log('[node-webkit-builder] ERROR: ', err);
     });
   },
+  */
   watch: function() {
     var b = browserify(config.browserify.args)
       .transform(to5ify.configure({

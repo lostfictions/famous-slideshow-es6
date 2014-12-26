@@ -12,6 +12,8 @@ import AppView from 'views/AppView';
 
 const mainContext = Engine.createContext();
 
+mainContext.setPerspective(1000);
+
 loadURL(SlideData.getUrl(), initApp);
 
 function initApp(data) {
