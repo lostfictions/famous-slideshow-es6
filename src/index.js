@@ -1,9 +1,6 @@
 import 'styles';
 
 import Engine from 'famous/core/Engine';
-import Modifier from 'famous/core/Modifier';
-import Transform from 'famous/core/Transform';
-import ImageSurface from 'famous/surfaces/ImageSurface';
 
 import {loadURL} from 'famous/utilities/Utility';
 import SlideData from 'data/SlideData';
@@ -12,7 +9,7 @@ import AppView from 'views/AppView';
 
 const mainContext = Engine.createContext();
 
-mainContext.setPerspective(1000);
+// mainContext.setPerspective(1000);
 
 loadURL(SlideData.getUrl(), initApp);
 
@@ -22,6 +19,3 @@ function initApp(data) {
 
   mainContext.add(appView);
 }
-
-
-

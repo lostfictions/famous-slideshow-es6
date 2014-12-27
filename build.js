@@ -54,6 +54,31 @@ var tasks = {
     });
   },
   */
+  build: function() {
+
+    var args = {
+      debug: false,
+      fullPaths: false,
+      paths: ['./src/']
+    };
+
+    browserify(args)
+      .transform(to5ify.configure({
+        experimental: true,
+        modules: 'commonInterop'
+      }))
+      .transform(famousify)
+      .transform(lessify)
+      .add('6to5/polyfill')
+      .require(config.browserify.entryFile, { entry: true })
+      .transform({
+        global: true
+      }, 'uglifyify')
+      .bundle()
+      .on('error', console.error)
+      .on('log', console.log)
+      .pipe(ws(config.browserify.outFile));
+  },
   watch: function() {
     var b = browserify(config.browserify.args)
       .transform(to5ify.configure({
