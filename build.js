@@ -4,13 +4,12 @@
 
 var browserify = require('browserify');
 var watchify = require('watchify');
-var bs = require('browser-sync');
 var ws = require('fs').createWriteStream;
 var to5ify = require('6to5ify');
 var famousify = require('famousify');
 var lessify = require('node-lessify');
 
-// var NwBuilder = require('node-webkit-builder');
+var bs = require('browser-sync');
 
 var outDir = './public/';
 var config = {
@@ -34,28 +33,7 @@ var config = {
 };
 
 var tasks = {
-  //TODO: finish nwbuild-ing.
-  /*
-  nwbuild: function() {
-    var nw = new NwBuilder({
-        version: 'latest',
-        files: './nwapp/**',
-        // macIcns: './icons/icon.icns',
-        // macPlist: {mac_bundle_id: 'myPkg'},
-        platforms: ['linux64']
-    });
-
-    nw.on('log', function (msg) {
-        console.log('[node-webkit-builder] ', msg);
-    });
-
-    nw.build().catch(function (err) {
-        console.log('[node-webkit-builder] ERROR: ', err);
-    });
-  },
-  */
   build: function() {
-
     var args = {
       debug: false,
       fullPaths: false,
