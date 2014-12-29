@@ -57,7 +57,8 @@ function makeCamera() {
     size: [this.options.cameraWidth, true],
     content: 'img/camera.png',
     properties: {
-      width: '100%'
+      width: '100%',
+      zIndex: -1
     }
   });
 
